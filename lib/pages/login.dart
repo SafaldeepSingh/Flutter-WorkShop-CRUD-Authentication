@@ -95,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final double deviceWidth = MediaQuery.of(context).size.width;
-    return ScopedModelDescendant(builder: (BuildContext context, Widget child, MainModel model) {
+    return ScopedModelDescendant(builder: (BuildContext context, Widget? child, MainModel model) {
       return Scaffold(
         body: Container(
           width: deviceWidth,

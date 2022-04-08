@@ -11,7 +11,7 @@ class CoursesPage extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModelDescendant(builder: (BuildContext context, Widget child, MainModel model) {
+    return ScopedModelDescendant(builder: (BuildContext context, Widget? child, MainModel model) {
       return Scaffold(
         appBar: AppBar(
           title: Text("Courses"),

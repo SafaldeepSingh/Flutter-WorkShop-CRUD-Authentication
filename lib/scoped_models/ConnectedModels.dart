@@ -29,7 +29,7 @@ class CoursesModel extends ConnectedModels {
     };
 
     return http.post(
-        'http://localhost:3001/api/course',
+        Uri.parse('http://localhost:3001/api/course'),
         headers: {
           "Content-type": "application/json"
         },
@@ -79,7 +79,7 @@ class CoursesModel extends ConnectedModels {
     notifyListeners();
     return http
         .get(
-      'http://localhost:3001/api/course',)
+      Uri.parse('http://localhost:3001/api/course'),)
         .then<Null>((http.Response response) {
       final List<Course> fetchedCourseList = [];
       final List<dynamic> courseListData = json.decode(response.body)["results"];
@@ -117,7 +117,7 @@ class CoursesModel extends ConnectedModels {
     };
 
     return http.put(
-        'http://localhost:3001/api/course/${id}',
+        Uri.parse('http://localhost:3001/api/course/${id}'),
         headers: {
           "Content-type": "application/json"
         },
@@ -170,7 +170,7 @@ class CoursesModel extends ConnectedModels {
     _isLoading = true;
     notifyListeners();
     return http.delete(
-      'http://localhost:3001/api/course/${id}',
+      Uri.parse('http://localhost:3001/api/course/${id}'),
     ).then<bool>((http.Response response) {
       if (response.statusCode != 200 && response.statusCode != 201) {
         _isLoading = false;
@@ -221,7 +221,7 @@ class UsersModel extends ConnectedModels{
       'password': password,
     };
     return http.post(
-        'http://localhost:3001/api/login',
+        Uri.parse('http://localhost:3001/api/login'),
         body: authData
     ).then<bool>((http.Response response) {
       print(response.body);

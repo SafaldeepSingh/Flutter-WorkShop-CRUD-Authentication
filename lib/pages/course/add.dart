@@ -82,7 +82,7 @@ class _AddCourseState extends State<AddCoursePage> {
   }
   @override
   Widget build(BuildContext context) {
-    return ScopedModelDescendant(builder: (BuildContext context, Widget child, MainModel model) {
+    return ScopedModelDescendant(builder: (BuildContext context, Widget? child, MainModel model) {
       return Scaffold(
         appBar: AppBar(
           title: Text("Add Course"),

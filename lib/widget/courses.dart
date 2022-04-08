@@ -25,6 +25,7 @@ class _CoursesWidgetState extends State<CoursesWidget> {
                     onPressed: () async {
                       dynamic results = await Navigator.pushNamed(context, "/courses/${model.courses[index].id}/edit");
                       if(results!= null){
+                        print(results);
                         if(results['updated']){
                       ScaffoldMessenger.of(context)
                           .showSnackBar(
@@ -64,7 +65,7 @@ class _CoursesWidgetState extends State<CoursesWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModelDescendant(builder: (BuildContext context, Widget child, MainModel model) {
+    return ScopedModelDescendant(builder: (BuildContext context, Widget? child, MainModel model) {
       return model.courses.length == 0?
           Text("Loading...")
           :ListView.builder(
