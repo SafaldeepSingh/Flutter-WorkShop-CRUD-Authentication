@@ -21,8 +21,25 @@ class _CoursesWidgetState extends State<CoursesWidget> {
             Text(model.courses[index].title),
             Row(
               children: [
-                OutlinedButton(onPressed: () {
-                  Navigator.pushNamed(context, "/courses/${model.courses[index].id}/edit");
+                OutlinedButton(
+                    onPressed: () async {
+                      dynamic results = await Navigator.pushNamed(context, "/courses/${model.courses[index].id}/edit");
+                      if(results!= null){
+                        if(results['updated']){
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(
+                          SnackBar(
+                            content:Text("Course was updated successfully"),
+                            duration: Duration(seconds: 5),
+                            action: SnackBarAction(
+                              label: "OK",
+                              onPressed: (){},
+                            ),
+                          ));
+
+                    }
+                  }
+
                 }, child: Text("Edit")),
                 SizedBox(width: 10),
                 ElevatedButton(onPressed: () {

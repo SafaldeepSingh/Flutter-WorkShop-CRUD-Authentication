@@ -17,7 +17,24 @@ class CoursesPage extends StatelessWidget{
           title: Text("Courses"),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () { Navigator.pushNamed(context, "/courses/add");  },
+          onPressed: () async {
+            dynamic results = await Navigator.pushNamed(context, "/courses/add");
+            if(results!= null){
+              if(results['added']){
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(
+                    SnackBar(
+                      content:Text("Course was added successfully"),
+                      duration: Duration(seconds: 5),
+                      action: SnackBarAction(
+                        label: "OK",
+                        onPressed: (){},
+                      ),
+                    ));
+
+              }
+            }
+          },
           child: Icon(Icons.add),
         ),
         body: Container(

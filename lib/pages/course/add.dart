@@ -59,7 +59,21 @@ class _AddCourseState extends State<AddCoursePage> {
             // print(_formData);
             model.addCourse(_formData['title'], _formData['description']).then((value) =>
             {
-              print(value)
+              if(value){
+                Navigator.pop(context, {'added': true})
+              }else{
+                // show snackbar
+                ScaffoldMessenger.of(context)
+                .showSnackBar(
+                SnackBar(
+                  content:Text("Course couldn't be added"),
+                  duration: Duration(seconds: 5),
+                  action: SnackBarAction(
+                    label: "OK",
+                    onPressed: (){},
+                  ),
+                ))
+              }
             });
           }
         },

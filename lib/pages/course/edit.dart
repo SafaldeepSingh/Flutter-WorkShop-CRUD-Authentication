@@ -70,7 +70,21 @@ class _EditCourseState extends State<EditCoursePage> {
             // print(_formData);
             model.updateCourse(widget.course.id,_formData['title'], _formData['description']).then((value) =>
             {
-              print(value)
+              if(value){
+                Navigator.pop(context, {'updated': true})
+              }else{
+                // show snackbar
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(
+                    SnackBar(
+                      content:Text("Course couldn't be updated"),
+                      duration: Duration(seconds: 5),
+                      action: SnackBarAction(
+                        label: "OK",
+                        onPressed: (){},
+                      ),
+                    ))
+              }
             });
           }
         },
